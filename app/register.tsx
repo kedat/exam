@@ -29,7 +29,7 @@ export default function RegisterScreen() {
     const cloneData: any = { ...dataForm };
     for (const key in cloneData) {
       if (!cloneData[key].value) {
-        cloneData[key].error = "This field can not be empty!";
+        cloneData[key].error = "Phần này không được để trống!";
       }
     }
     setDataForm(cloneData);
@@ -56,9 +56,10 @@ export default function RegisterScreen() {
           body: JSON.stringify(payload),
         });
         const res = await response.json();
-        8
+        8;
         if (res.token) {
           await AsyncStorage.setItem("user", JSON.stringify(res.result));
+          await AsyncStorage.setItem("token", JSON.stringify(res.token));
           navigation.reset({ index: 0, routes: [{ name: "(tabs)" as never }] });
         } else {
           Toast.show({
@@ -78,13 +79,13 @@ export default function RegisterScreen() {
       if (name === "email" && !EmailValidation(value)) {
         setDataForm({
           ...cloneData,
-          email: { value, error: "Invalid email!" },
+          email: { value, error: "Email không hợp lệ" },
         });
       }
       if (name === "confirmPassword" && value !== cloneData.password.value) {
         setDataForm({
           ...cloneData,
-          confirmPassword: { value, error: "Password do not match" },
+          confirmPassword: { value, error: "Mật khẩu không trùng khớp" },
         });
       }
     },
