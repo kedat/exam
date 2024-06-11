@@ -1,19 +1,44 @@
 import { Text, View } from "@/components/Themed";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect } from "expo-router";
+import { useCallback, useState } from "react";
 import { Button, ScrollView, StyleSheet } from "react-native";
 
 export default function TabOneScreen() {
   const navigation = useNavigation();
+  const [userInfo, setUserInfo] = useState({
+    username: "",
+    email: "",
+    phone: "",
+  });
+  const getUser = async () => {
+    const user = await AsyncStorage.getItem("user");
+    if (user) {
+      setUserInfo(JSON.parse(user));
+    }
+  };
+  useFocusEffect(
+    useCallback(() => {
+      getUser();
+    }, [getUser, userInfo])
+  );
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Chào mừng đến với Đại học Vinh</Text>
       </View>
+
       <View style={styles.footer}>
         <Button
-          title="Đi tới trang trò chuyện"
+          title={`Đi tới trang ${
+            userInfo?.username ? "trò chuyện" : "đăng nhập"
+          }`}
           onPress={() => {
-            navigation.navigate("chat" as never);
+            userInfo?.username
+              ? navigation.navigate("chat" as never)
+              : navigation.navigate("login" as never);
           }}
         />
       </View>
