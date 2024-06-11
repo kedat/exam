@@ -1,2 +1,2 @@
 export const HOST =
-  "https://0f93-2402-800-61f8-dc32-5001-20c0-3e81-46df.ngrok-free.app/chat";
+  "https://7612-2402-800-61f8-dc32-a5b3-9ae2-7481-4ba.ngrok-free.app/chat";
