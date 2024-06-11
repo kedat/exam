@@ -93,7 +93,7 @@ export default function RegisterScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Register</Text>
+      <Text style={styles.title}>Đăng ký</Text>
       <View style={styles.inputContainer}>
         <Icon name="envelope" size={20} color="#555" style={styles.icon} />
         <TextInput
@@ -112,7 +112,7 @@ export default function RegisterScreen() {
         <Icon name="user" size={20} color="#555" style={styles.icon} />
         <TextInput
           style={styles.input}
-          placeholder="Username"
+          placeholder="Tên người dùng"
           placeholderTextColor="#555"
           onChangeText={(val) => onChangeText("username", val)}
           autoCapitalize="none"
@@ -126,7 +126,7 @@ export default function RegisterScreen() {
         <Icon name="key" size={20} color="#555" style={styles.icon} />
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder="Mật khẩu"
           placeholderTextColor="#555"
           onChangeText={(val) => onChangeText("password", val)}
           autoCapitalize="none"
@@ -141,7 +141,7 @@ export default function RegisterScreen() {
         <Icon name="key" size={20} color="#555" style={styles.icon} />
         <TextInput
           style={styles.input}
-          placeholder="Confirm password"
+          placeholder="Xác nhận mật khẩu"
           placeholderTextColor="#555"
           onChangeText={(val) => onChangeText("confirmPassword", val)}
           autoCapitalize="none"
@@ -167,7 +167,7 @@ export default function RegisterScreen() {
       )}
 
       <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-        <Text style={styles.buttonText}>Create account</Text>
+        <Text style={styles.buttonText}>Tạo tài khoản</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.registerButton}
@@ -175,7 +175,7 @@ export default function RegisterScreen() {
           navigation.navigate("login" as never);
         }}
       >
-        <Text style={styles.registerText}>Back to login</Text>
+        <Text style={styles.registerText}>Trở về đăng nhập</Text>
       </TouchableOpacity>
     </View>
   );

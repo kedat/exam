@@ -48,7 +48,7 @@ export default function ChatScreen() {
     setMessages([
       {
         _id: 1,
-        text: `Xin chào, tôi thuộc ${ChatFaceData[id]?.name} có thể giúp gì cho bạn?`,
+        text: `Xin chào, tôi thuộc ${ChatFaceData[id]?.name}, tôi có thể giúp gì cho bạn?`,
         createdAt: new Date(),
         user: {
           _id: 2,

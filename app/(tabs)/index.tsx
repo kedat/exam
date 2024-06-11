@@ -1,33 +1,17 @@
 import { Text, View } from "@/components/Themed";
 import { useNavigation } from "@react-navigation/native";
 import { Button, ScrollView, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 
 export default function TabOneScreen() {
   const navigation = useNavigation();
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Welcome to Our App</Text>
-      </View>
-      <View style={styles.features}>
-        <Text style={styles.sectionTitle}>Features</Text>
-        <View style={styles.featureItem}>
-          <Icon name="rocket" size={50} color="#517fa4" />
-          <Text style={styles.featureText}>Fast and Reliable</Text>
-        </View>
-        <View style={styles.featureItem}>
-          <Icon name="mobile" size={50} color="#517fa4" />
-          <Text style={styles.featureText}>Mobile Friendly</Text>
-        </View>
-        <View style={styles.featureItem}>
-          <Icon name="lock" size={50} color="#517fa4" />
-          <Text style={styles.featureText}>Secure</Text>
-        </View>
+        <Text style={styles.title}>Chào mừng đến với Đại học Vinh</Text>
       </View>
       <View style={styles.footer}>
         <Button
-          title="Go to chat page"
+          title="Đi tới trang trò chuyện"
           onPress={() => {
             navigation.navigate("chat" as never);
           }}

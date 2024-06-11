@@ -55,7 +55,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Đăng nhập</Text>
       <View style={styles.inputContainer}>
         <Icon name="envelope" size={20} color="#555" style={styles.icon} />
         <TextInput
@@ -72,7 +72,7 @@ export default function App() {
         <Icon name="lock" size={20} color="#555" style={styles.icon} />
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder="Mật khẩu"
           placeholderTextColor="#555"
           value={password}
           onChangeText={setPassword}
@@ -80,13 +80,13 @@ export default function App() {
         />
       </View>
       <TouchableOpacity style={styles.button} onPress={handlePressLogin}>
-        <Text style={styles.buttonText}>Login</Text>
+        <Text style={styles.buttonText}>Đăng nhập</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.forgotPassword}>
-        <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+        <Text style={styles.forgotPasswordText}>Quên mật khẩu?</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.forgotPassword}>
-        <Text style={styles.forgotPasswordText}>Or</Text>
+        <Text style={styles.forgotPasswordText}>Hoặc</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.registerButton}
@@ -94,7 +94,7 @@ export default function App() {
           navigation.navigate("register" as never);
         }}
       >
-        <Text style={styles.registerText}>Register here</Text>
+        <Text style={styles.registerText}>Tạo tài khoản mới</Text>
       </TouchableOpacity>
     </View>
   );
