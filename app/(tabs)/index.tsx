@@ -1,3 +1,4 @@
+import React from "react";
 import { Text, View } from "@/components/Themed";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/react-in-jsx-scope */
 import ChatFaceData from "@/constants/ChatFaceData";
 import { HOST } from "@/constants/host";
 import { FontAwesome } from "@expo/vector-icons";
@@ -40,7 +42,7 @@ export default function ChatScreen() {
   const checkFaceId = async () => {
     const id = Number(await AsyncStorage.getItem("chatFaceId"));
     const token: string | null = await AsyncStorage.getItem("token");
-    setAccessToken(token?.replace(/\"/g, "") || "");
+    setAccessToken(token?.replace(/"/g, "") || "");
     id
       ? setChatFace(ChatFaceData[id]?.image)
       : setChatFace(ChatFaceData[0].image);
@@ -81,21 +83,26 @@ export default function ChatScreen() {
       try {
         setLoading(true);
 
-        const response = await fetch(`${HOST}/chat_with_documents`, {
-          method: "POST",
-          mode: "cors",
-          credentials: "same-origin",
-          headers: {
-            Authorization: `Bearer ${String(accessToken)}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
+        const response = await fetch(
+          `${HOST}/${
+            botId === "tc" ? "chat_with_custom_model" : "chat_with_documents"
+          }`,
+          {
+            method: "POST",
+            mode: "cors",
+            credentials: "same-origin",
+            headers: {
+              Authorization: `Bearer ${String(accessToken)}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          }
+        );
         const res = await response.json();
         if (!res.error) {
           const chatAIResp: IMessage = {
             _id: Math.random() * (9999999 - 1),
-            text: res.answer.output_text,
+            text: botId === "tc" ? res.answer.answer : res.answer.output_text,
             createdAt: new Date(),
             user: {
               _id: 2,
