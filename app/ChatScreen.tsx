@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/react-in-jsx-scope */
 import ChatFaceData from "@/constants/ChatFaceData";
-import { HOST } from "@/constants/host";
+import { HOST, CUSTOM_HOST } from "@/constants/host";
 import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
@@ -82,10 +82,13 @@ export default function ChatScreen() {
       setLoading(true);
       try {
         setLoading(true);
-
         const response = await fetch(
-          `${HOST}/${
-            botId === "tc" ? "chat_with_custom_model" : "chat_with_documents"
+          `${botId === "tc" || botId === "chung" ? HOST : CUSTOM_HOST}/${
+            botId === "tc"
+              ? "chat_with_custom_model"
+              : botId === "chung"
+              ? "chat_with_my_llm"
+              : "chat_with_documents"
           }`,
           {
             method: "POST",
@@ -102,7 +105,10 @@ export default function ChatScreen() {
         if (!res.error) {
           const chatAIResp: IMessage = {
             _id: Math.random() * (9999999 - 1),
-            text: botId === "tc" ? res.answer.answer : res.answer.output_text,
+            text:
+              botId === "tc" || botId === "chung"
+                ? res.answer.answer
+                : res.answer.output_text,
             createdAt: new Date(),
             user: {
               _id: 2,
