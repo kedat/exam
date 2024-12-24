@@ -83,7 +83,7 @@ export default function ChatScreen() {
       try {
         setLoading(true);
         const response = await fetch(
-          `${botId === "tc" || botId === "chung" ? HOST : CUSTOM_HOST}/${
+          `${botId === "tc" || botId === "chung" ? CUSTOM_HOST : HOST}/${
             botId === "tc"
               ? "chat_with_custom_model"
               : botId === "chung"
@@ -116,6 +116,7 @@ export default function ChatScreen() {
               avatar: chatFace,
             },
           };
+          console.log("🚀 ~ chatAIResp:", chatAIResp);
           setMessages((previousMessages) =>
             GiftedChat.append(previousMessages, chatAIResp as any)
           );
